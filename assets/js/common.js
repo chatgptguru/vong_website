@@ -692,33 +692,8 @@ $(document).ready(function() {
         if (event.isDefaultPrevented()) {
             formError();
             submitMSG(false, "Please fill in the form...");
-        } else {
-            event.preventDefault();
-            submitForm();
         }
     });
-
-    function submitForm(){
-        var name = $("#nameContact").val(),
-            email = $("#emailContact").val(),
-            message = $("#messageContact").val();
-			
-        var url = "https://aapbd.com/api/contact-with-nayeem";
-		
-        $.ajax({
-            type: "POST",
-            url: url,
-            data: "name=" + name + "&email=" + email + "&message=" + message,
-            success : function(data){
-                if (data.status == "success"){
-                    formSuccess();
-                } else {
-                    formError();
-                    submitMSG(false,data.message);
-                }
-            }
-        });
-    }
 
     function formSuccess(){
         $("#contact-form")[0].reset();
